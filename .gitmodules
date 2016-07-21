@@ -28,3 +28,6 @@
 [submodule "src/poweremail_oorq"]
 	path = src/poweremail_oorq
 	url = git@github.com:gisce/poweremail_oorq.git
+[submodule "src/libFacturacioATR"]
+	path = src/libFacturacioATR
+	url = git@github.com:gisce/libFacturacioATR.git
