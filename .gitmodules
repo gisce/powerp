@@ -1,0 +1,33 @@
+[submodule "src/erp"]
+	path = src/erp
+	url = git@github.com:gisce/erp.git
+[submodule "src/oorq"]
+	path = src/oorq
+	url = git@github.com:gisce/oorq.git
+	branch = api_v5
+[submodule "src/spawn_oop"]
+	path = src/spawn_oop
+	url = git@github.com:gisce/spawn_oop.git
+[submodule "src/poweremail2"]
+	path = src/poweremail2
+	url = git@github.com:gisce/poweremail.git
+[submodule "src/openerp-sentry"]
+	path = src/openerp-sentry
+	url = git@github.com:gisce/openerp-sentry.git
+	branch = v5_legacy
+[submodule "src/ws_transactions"]
+	path = src/ws_transactions
+	url = git@github.com:gisce/ws_transactions.git
+[submodule "src/ir_attachment_mongodb"]
+	path = src/ir_attachment_mongodb
+	url = git@github.com:gisce/ir_attachment_mongodb.git
+[submodule "src/mongodb_backend"]
+	path = src/mongodb_backend
+	url = git@github.com:gisce/mongodb_backend.git
+	branch = gisce
+[submodule "src/poweremail_oorq"]
+	path = src/poweremail_oorq
+	url = git@github.com:gisce/poweremail_oorq.git
+[submodule "src/libFacturacioATR"]
+	path = src/libFacturacioATR
+	url = git@github.com:gisce/libFacturacioATR.git
