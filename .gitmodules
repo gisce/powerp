@@ -8,3 +8,6 @@
 [submodule "src/spawn_oop"]
 	path = src/spawn_oop
 	url = git@github.com:gisce/spawn_oop.git
+[submodule "src/poweremail2"]
+	path = src/poweremail2
+	url = git@github.com:gisce/poweremail.git
