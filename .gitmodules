@@ -1,0 +1,3 @@
+[submodule "src/erp"]
+	path = src/erp
+	url = git@github.com:gisce/erp.git
