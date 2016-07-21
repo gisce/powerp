@@ -25,3 +25,6 @@
 	path = src/mongodb_backend
 	url = git@github.com:gisce/mongodb_backend.git
 	branch = gisce
+[submodule "src/poweremail_oorq"]
+	path = src/poweremail_oorq
+	url = git@github.com:gisce/poweremail_oorq.git
