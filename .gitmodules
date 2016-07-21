@@ -1,3 +1,7 @@
 [submodule "src/erp"]
 	path = src/erp
 	url = git@github.com:gisce/erp.git
+[submodule "src/oorq"]
+	path = src/oorq
+	url = git@github.com:gisce/oorq.git
+	branch = api_v5
