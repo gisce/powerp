@@ -5,3 +5,6 @@
 	path = src/oorq
 	url = git@github.com:gisce/oorq.git
 	branch = api_v5
+[submodule "src/spawn_oop"]
+	path = src/spawn_oop
+	url = git@github.com:gisce/spawn_oop.git
