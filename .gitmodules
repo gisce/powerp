@@ -11,3 +11,7 @@
 [submodule "src/poweremail2"]
 	path = src/poweremail2
 	url = git@github.com:gisce/poweremail.git
+[submodule "src/openerp-sentry"]
+	path = src/openerp-sentry
+	url = git@github.com:gisce/openerp-sentry.git
+	branch = v5_legacy
