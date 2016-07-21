@@ -18,3 +18,6 @@
 [submodule "src/ws_transactions"]
 	path = src/ws_transactions
 	url = git@github.com:gisce/ws_transactions.git
+[submodule "src/ir_attachment_mongodb"]
+	path = src/ir_attachment_mongodb
+	url = git@github.com:gisce/ir_attachment_mongodb.git
