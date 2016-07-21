@@ -15,3 +15,6 @@
 	path = src/openerp-sentry
 	url = git@github.com:gisce/openerp-sentry.git
 	branch = v5_legacy
+[submodule "src/ws_transactions"]
+	path = src/ws_transactions
+	url = git@github.com:gisce/ws_transactions.git
