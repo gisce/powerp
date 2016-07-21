@@ -1,0 +1,47 @@
+cat > "server.conf" << EOF
+[options]
+assert_exit_level = warn
+server_actions_allow_code = False
+secure = False
+cache_timeout = 100000
+netinterface =
+admin_passwd = admin
+db_password = ${ERP_POSTGRESQL_PASSWORD}
+login_message = False
+db_maxconn = 64
+reportgz = False
+xmlrpc = True
+db_port = False
+debug_mode = False
+logfile = False
+csv_internal_sep = ,
+translate_modules = ['all']
+stop_after_init = True
+email_from = False
+addons_path = ${LIB}/erp/server/bin/addons
+without_demo = False
+netport = 8070
+demo = {}
+syslog = False
+list_db = True
+port = 8069
+log_level = info
+smtp_port = 25
+smtp_server = localhost
+db_user = ${ERP_POSTGRESQL_USER}
+price_accuracy = 6
+import_partial = False
+soap = False
+pidfile = False
+smtp_password = False
+netrpc = False
+interface =
+pg_path = None
+root_path = ${LIB}/erp/server/bin
+smtp_user = False
+db_name = ${ERP_POSTGRESQL_DATABASE}
+db_host = ${ERP_POSTGRESQL_HOST}
+mongodb_host = mongo
+mongodb_port = 27017
+redis_url = redis://${ERP_REDIS_HOST:-localhost}:6379/0
+EOF

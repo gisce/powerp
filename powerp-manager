@@ -1,0 +1,58 @@
+#!/bin/bash
+if [ "$1" == "setup" ]; then 
+    set -e
+    echo "Creating server.conf..."
+    if [ "${ERP_POSTGRESQL_HOST}" == "" ]; then
+        echo "You must define ERP_POSTGRESQL_HOST env var" >&2
+        undefined=1
+    fi
+    if [ "${ERP_POSTGRESQL_USER}" == "" ]; then
+        echo "You must define ERP_POSTGRESQL_USER env var" >&2
+        undefined=1
+    fi
+    if [ "$undefined" == "1" ]; then
+        exit 1
+    fi
+    echo "*:*:*:*:$ERP_POSTGRESQL_PASSWORD" > /root/.pgpass
+    chmod 600 /root/.pgpass
+    mkdir -p /usr/local/etc/powerp
+    cd /usr/local/etc/powerp
+    sh /usr/local/src/powerp/server.conf.tmpl
+    #. /usr/local/src/powerp/powerp-environment
+    #. /usr/local/src/powerp/powerp-setup
+    pip install -r /usr/local/src/powerp/src/oorq/requirements.txt
+    pip install -e /usr/local/src/powerp/src/libFacturacioATR
+    pip install -r /usr/local/src/powerp/src/erp/requirements.txt
+    cd /usr/local/src/powerp/src/erp/
+    ./tools/link_addons.sh
+    echo "Exporting src libs... "
+    for EGG in `ls -1d /usr/local/src/powerp/src/erp/src/*`; do
+        export PYTHONPATH=$PYTHONPATH:$EGG
+    done
+    while ! python -c "from psycopg2 import connect; connect(\"dbname='${ERP_POSTGRESQL_DATABASE}' host='${ERP_POSTGRESQL_HOST}' user='${ERP_POSTGRESQL_USER}' password='${ERP_POSTGRESQL_PASSWORD}'\")"; do
+        echo "Waiting for postgresql"
+        sleep 10
+    done
+    pip install "pymongo<=2.8"
+    cd /usr/local/src/powerp/src/erp/server/bin
+    set +e
+    for requirements in addons/*/requirements.txt; do
+        pip install -r $requirements
+    done
+elif [ "$1" == "update" ]; then
+    shift
+    database=$1
+    shift
+    cd /usr/local/src/powerp/src/erp
+    #. /usr/local/src/powerp/powerp-environment
+    cd /usr/local/src/powerp/src/erp/server/bin
+    ./openerp-server.py --config=/usr/local/etc/powerp/server.conf --log-level=debug --price_accuracy=6 -p0 --stop-after-init --database=$database --update=$@
+elif [ "$1" == "run" ]; then
+    #. /usr/local/src/powerp/powerp-environment
+    cd /usr/local/src/powerp/src/erp/server/bin
+    ./openerp-server.py --config=/usr/local/etc/powerp/server.conf --log-level=debug --price_accuracy=6 --database=$2 --port=$3
+elif [ "$1" == "queue" ]; then
+    #. /usr/local/src/powerp/powerp-environment
+    cd /usr/local/src/powerp/src/erp/server/bin
+    OPENERP_SERVER="/usr/local/etc/powerp/server.conf" /home/erp/bin/rq worker -w oorq.worker.Worker -u redis://redis:6379/0 ${2:-background_base}
+fi

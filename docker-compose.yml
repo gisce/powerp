@@ -1,0 +1,37 @@
+erp:
+  build: .
+  links:
+    - db
+    - mongo
+    - redis
+  ports:
+    - "8069:8069"
+    - "18069:18069"
+    - "28069:28069"
+    - "38069:38069"
+    - "48069:48069"
+    - "58069:58069"
+  environment:
+    - ERP_POSTGRESQL_HOST
+    - ERP_POSTGRESQL_USER
+    - ERP_POSTGRESQL_PASSWORD
+    - ERP_POSTGRESQL_DATABASE
+    - ERP_REDIS_HOST
+    - OORQ_ASYNC
+    - LIB=/usr/local/src/powerp/src
+    - PYTHONPATH=/usr/local/src/powerp/src/erp/server/sitecustomize:/usr/local/src/powerp/src/erp/server/bin:/usr/local/src/powerp/src/erp/server/bin/addons
+  volumes:
+    - .:/usr/local/src/powerp
+
+db:
+  image: ${POSTGRES_IMAGE}
+  ports:
+    - "5432:5432"
+
+mongo:
+  image: ${MONGO_IMAGE}
+  ports:
+    - "27017:27017"
+
+redis:
+  image: redis:2.8
