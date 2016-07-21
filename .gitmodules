@@ -21,3 +21,7 @@
 [submodule "src/ir_attachment_mongodb"]
 	path = src/ir_attachment_mongodb
 	url = git@github.com:gisce/ir_attachment_mongodb.git
+[submodule "src/mongodb_backend"]
+	path = src/mongodb_backend
+	url = git@github.com:gisce/mongodb_backend.git
+	branch = gisce
