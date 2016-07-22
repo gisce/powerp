@@ -25,8 +25,10 @@ Import a database
 ```
 sudo apt-get install -y postgresql-client-common
 
-echo "CREATE database" | psql -h localhost
-cat database.sql | psql -h localhost database erp
+database=database
+echo "CREATE DATABASE $database" | psql -h localhost template1 erp
+# Password: erp
+cat database.sql | psql -h localhost $database erp
 # Password: erp
 
 docker exec powerp_erp_1 powerp-manager run database 18069
