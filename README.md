@@ -13,7 +13,7 @@ git submodule update
 export $(cat .env | xargs)
 
 docker-compose up
-docker exec powerp_erp_1 powerp-manager setup
+docker exec -it powerp_erp_1 powerp-manager setup
 ```
 
 Run
@@ -31,12 +31,12 @@ echo "CREATE DATABASE $database" | psql -h localhost template1 erp
 cat database.sql | psql -h localhost $database erp
 # Password: erp
 
-docker exec powerp_erp_1 powerp-manager run database 18069
+docker exec -it powerp_erp_1 powerp-manager run $database 18069
 ```
 
 Update addons
 ```
-docker exec powerp_erp_1 powerp-manager update database addon1,addon2
+docker exec -it powerp_erp_1 powerp-manager update $database addon1,addon2
 ```
 
 Make and use a database snapshot
