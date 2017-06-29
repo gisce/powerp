@@ -48,3 +48,8 @@ export $(cat .env | xargs)
 
 POSTGRES_IMAGE=oopostgres_test:mysnapshot docker-compose up
 ```
+
+Run destral
+```
+docker exec -it powerp_erp_1 OPENERP_MONGODB_HOST=mongo OPENERP_MONGODB_PORT=27017 OPENERP_DB_HOST=db OPENERP_DB_PASSWORD=erp OPENERP_DB_USER=erp OPENERP_ROOT_PATH=/usr/local/src/powerp/src/erp/server/bin/ destral -m mongodb_backend
+```
