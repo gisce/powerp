@@ -26,7 +26,7 @@ if [ "$1" == "setup" ]; then
     cd /usr/local/src/powerp/src/erp/
     ./tools/link_addons.sh
     echo "Exporting src libs... "
-    for EGG in `ls -1d /usr/local/src/powerp/src/erp/src/*`; do
+    for EGG in `ls -1d /usr/local/src/powerp/src/*`; do
         export PYTHONPATH=$PYTHONPATH:$EGG
     done
     while ! python -c "from psycopg2 import connect; connect(\"dbname='${ERP_POSTGRESQL_DATABASE}' host='${ERP_POSTGRESQL_HOST}' user='${ERP_POSTGRESQL_USER}' password='${ERP_POSTGRESQL_PASSWORD}'\")"; do
