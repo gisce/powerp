@@ -54,5 +54,5 @@ elif [ "$1" == "run" ]; then
 elif [ "$1" == "queue" ]; then
     #. /usr/local/src/powerp/powerp-environment
     cd /usr/local/src/powerp/src/erp/server/bin
-    OPENERP_SERVER="/usr/local/etc/powerp/server.conf" /home/erp/bin/rq worker -w oorq.worker.Worker -u redis://redis:6379/0 ${2:-background_base}
+    OPENERP_SERVER="/usr/local/etc/powerp/server.conf" rq worker -w oorq.worker.Worker -u redis://redis:6379/0 ${2:-background_base}
 fi
