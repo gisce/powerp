@@ -46,11 +46,11 @@ elif [ "$1" == "update" ]; then
     cd /usr/local/src/powerp/src/erp
     #. /usr/local/src/powerp/powerp-environment
     cd /usr/local/src/powerp/src/erp/server/bin
-    ./openerp-server.py --config=/usr/local/etc/powerp/server.conf --log-level=debug --price_accuracy=6 -p0 --stop-after-init --database=$database --update=$@
+    DEBUG_ENABLED=true PYTHONPATH=/usr/local/src/powerp/src/erp/server/sitecustomize ./openerp-server.py --config=/usr/local/etc/powerp/server.conf --log-level=debug --price_accuracy=6 -p0 --stop-after-init --database=$database --update=$@
 elif [ "$1" == "run" ]; then
     #. /usr/local/src/powerp/powerp-environment
     cd /usr/local/src/powerp/src/erp/server/bin
-    ./openerp-server.py --config=/usr/local/etc/powerp/server.conf --log-level=debug --price_accuracy=6 --database=$2 --port=$3
+    PYTHONIOENCODING="UTF-8" DEBUG_ENABLED='true' PYTHONPATH=/usr/local/src/powerp/src/erp/server/sitecustomize ./openerp-server.py --config=/usr/local/etc/powerp/server.conf --log-level=debug --price_accuracy=6 --database=$2 --port=$3
 elif [ "$1" == "queue" ]; then
     #. /usr/local/src/powerp/powerp-environment
     cd /usr/local/src/powerp/src/erp/server/bin
